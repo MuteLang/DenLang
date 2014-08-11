@@ -96,7 +96,7 @@ end
 def operationParser init
 
 	key = init.gsub(":","").split(" ")[0]
-	init = init.gsub(":","").gsub("+","").split(" ")
+	init = init.gsub(":","").gsub("+","").gsub("-","").split(" ")
 
 	if key == "+" then return operatorPlus(init) end
 	if key == "-" then return operatorMinus(init) end
@@ -137,6 +137,24 @@ def operatorPlus valArray
 end
 
 def operatorMinus valArray
+
+
+	if valArray[0].to_i == 0 && valArray[1].to_i == 0
+
+		value = valArray[0].gsub("\"","")
+		valArray.each do |k,v|
+			if k == valArray[0] then next end
+			k = k.gsub("\"","")
+			if @memory['passive'][k]
+				value = value.gsub(variableRender(k),"")
+			else
+				value = value.sub(k,"")
+			end
+		end
+		return value
+
+	end
+
 
 	value = 0
 	valArray.each do |k,v|
