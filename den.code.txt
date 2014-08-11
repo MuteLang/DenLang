@@ -8,6 +8,12 @@ value2
 value3
   : + 10 value2
 
+value4 a
+  : + 10 a
+
+value5 a b
+  : + 10 a b
+
 string1
   : "foo"
 
@@ -17,7 +23,7 @@ string2
 string3
   : + "bar" string1
 
-string4
-  : - "foobar" "f"
+string4 a
+  : a
 
-! string4
+! string3 "hello"

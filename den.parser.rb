@@ -73,22 +73,38 @@ def blockSolver init,block
 	end
 
 	if key == "!"
-		puts "debug:"+variableRender(init.split(" ")[1]).to_s
+		puts "debug:"+variableRender(init.sub("! ","")).to_s
 	end
 
 end
 
 def variableRender key
 
-	init = @memory['passive'][key]['return']
-	key = init.gsub(":","").gsub("\"","").lstrip.split(" ")[0]
-
-	# A value
-	if !key.index( /[^[:alnum:]]/ )
+	if !@memory['passive'][key.split(" ")[0]]
 		return key
+	end
+
+
+	varName = key.split(" ")[0]
+	varMemory = @memory['passive'][varName]
+	varReturn = varMemory['return'].sub(": ","").gsub("\"","")
+	varParam = varMemory['params']
+
+	testValue = varReturn.split(" ")[0].index( /[^[:alnum:]]/ )
+
+	# Parse Parameters
+	count = 1
+	varParam.each do |k,v|
+		varReturn = varReturn.sub(k,variableRender(key.split(" ")[count]))
+		count += 1
+	end
+
+	# Begins with alphanumeric
+	if !testValue
+		return varReturn
 	# An operation
 	else
-		return operationParser(init)
+		return operationParser(varReturn)
 	end
 
 end
