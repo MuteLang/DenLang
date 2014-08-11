@@ -73,7 +73,10 @@ def blockSolver init,block
 	end
 
 	if key == "!"
-		puts "debug:"+variableRender(init.sub("! ","")).to_s
+		puts "log: "+variableRender(init.sub("! ","")).to_s
+	end
+	if key == "'"
+		puts variableRender(init.sub("' ","")).to_s
 	end
 
 end
