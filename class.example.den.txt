@@ -17,11 +17,17 @@ example:array "hello world"
 
 array content
   index : 0
-  split char
+  firstWord char
     ? = content.index char 
       : content.0..index
-    + index 1
+    index : + index 1
 
 example:array "hello world"
 
-! example.split " " ' hello
+! example.firstWord " " ' hello
+
+
+
+
+
+
