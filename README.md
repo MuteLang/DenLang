@@ -75,10 +75,12 @@ Numbers val1 val2
     : + val1 val2
   sub
     : - val1 val2
+  isEven
+    : = %2 0
 
 test:Numbers 10 5
-test.add // 15
-test.sub // 5
+test.add
+test.isEven
 ```
 
 ## Loops, Foreach & While
@@ -92,4 +94,12 @@ loop
   + = index 1
 ```
 
+## Extension
 
+```
+someClass
+  methodA : True
+  methodB : True
+
+someClass.methodC : True
+```
