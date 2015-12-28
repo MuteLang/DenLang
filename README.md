@@ -53,16 +53,7 @@ function param1 param2
 
 ```
 function param1 param2
-  ? = (+ param1 param2) 10
-    : True
-  : False
-```
-
-## Functions & Conditions
-
-```
-function param1 param2
-  ? = (+ param1 param2) 10
+  ? = ! + param1 param2 10
     : True
   : False
 ```
@@ -71,16 +62,15 @@ function param1 param2
 
 ```
 Numbers val1 val2
+  Value1 : val1
+  Value2 : val2
   add
-    : + val1 val2
+    : + Value1 Value2
   sub
-    : - val1 val2
-  isEven
-    : = %2 0
+    : - Value1 Value2
 
 test:Numbers 10 5
 test.add
-test.isEven
 ```
 
 ## Loops, Foreach & While
