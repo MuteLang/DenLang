@@ -18,6 +18,8 @@ int : 10
 - 10 2
 * 4 2
 / 16 2
+^ 2 2 2
+% 8 
 ```
 
 ## Conditions
@@ -38,8 +40,10 @@ int : 10
 ## Comments
 
 ```
-; Comment Line
-; Comment Block ;
+{ Comment Line }
+{ 
+  Comment Block
+}
 ```
 
 ## Functions
